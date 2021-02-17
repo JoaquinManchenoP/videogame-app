@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
+import { AiFillHome } from "react-icons/ai";
+import { CgGames } from "react-icons/cg";
+import { FiSearch } from "react-icons/fi";
+import { MdGamepad } from "react-icons/md";
 
 export default function NavBar() {
   let [toggle, setToggle] = useState(true);
@@ -23,31 +27,71 @@ export default function NavBar() {
             initial={{ width: 0 }}
             animate={{ width: 200 }}
             exit={{ width: 0 }}
-            transition={{ duration: 1 }}
-            className="option__side  bg-blue-500 w-full  "
+            transition={{ duration: 0.6 }}
+            className="option__side bg-light-purple w-full  "
           >
-            <motion.p
+            <motion.div
+              className="flex flex-col justify-center mt-20 items-start ml-10 space-y-3 text-deep-purple"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3, delay: 0.3 }}
+              transition={{ duration: 0.2, delay: 0.2 }}
             >
-              <NavLink exact to="/" activeClassName="text-white">
-                Home
+              <div className="main__icon text-4xl mb-8">
+                <MdGamepad />
+              </div>
+
+              <NavLink
+                className="flex space-x-3"
+                exact
+                to="/"
+                activeClassName="text-white  "
+              >
+                <div className="icon pt-1  ">
+                  <AiFillHome />
+                </div>
+                <dic className="text ">
+                  <h1>Home</h1>
+                </dic>
               </NavLink>
 
-              <NavLink exact to="/genres" activeClassName="text-white">
-                <h1>PGenres</h1>
+              <NavLink
+                className="flex space-x-3"
+                exact
+                to="/genres"
+                activeClassName="text-white"
+              >
+                <div className="icon pt-1">
+                  <CgGames />
+                </div>
+                <div className="text">
+                  <h1> Genres</h1>
+                </div>
               </NavLink>
-            </motion.p>
+              <NavLink
+                className="flex space-x-3"
+                exact
+                to="/search"
+                activeClassName="text-white"
+              >
+                <div className="icon">
+                  <FiSearch />
+                </div>
+                <div className="text">
+                  <h1> Search</h1>
+                </div>
+              </NavLink>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
 
       <motion.div
-        className="toggle__butto h-full w-2.5  flex items-center justify-center bg-gray-100 "
+        className="toggle__button h-full w-2.5  flex items-center justify-center bg-purple-200 "
         initial={{ opacity: 0 }}
+        aanimate={{ opacity: 1 }}
         whileHover={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
       >
         <div
           className="toggle h-20 w-full rounded-full bg-gray-400 "

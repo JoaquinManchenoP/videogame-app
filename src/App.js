@@ -12,6 +12,7 @@ import HomePage from "./Pages/HomePage";
 import GenresPage from "./Pages/GenresPage";
 import NavBar from "./Components/NavBar";
 import { AnimatePresence } from "framer-motion";
+import SearchPage from "./Pages/SearchPage";
 
 function App() {
   return (
@@ -21,8 +22,11 @@ function App() {
           <div className="navbar absolute z-10">
             <NavBar />
           </div>
-          <div className="App z-0 ml-6 ">
+          <div className="App z-0  ">
             <Switch>
+              <Route path="/search">
+                <SearchPage />
+              </Route>
               <Route path="/genres">
                 <GenresPage />
               </Route>
