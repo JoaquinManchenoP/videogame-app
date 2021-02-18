@@ -1,31 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { NavLink } from "react-router-dom";
 import { AiFillHome } from "react-icons/ai";
 import { CgGames } from "react-icons/cg";
 import { FiSearch } from "react-icons/fi";
 import { MdGamepad } from "react-icons/md";
+import { Context } from "./Context";
 
 export default function NavBar() {
   let [toggle, setToggle] = useState(true);
   let [showMenu, setShowMenu] = useState(true);
+  const [state, setState] = useContext(Context);
 
   function handleToggle() {
-    if (toggle) {
-      setToggle(false);
+    if (state) {
+      setState(false);
     } else {
-      setToggle(true);
+      setState(true);
     }
-    console.log(toggle);
   }
 
   return (
     <div className="navbar h-screen w-52 flex">
       <AnimatePresence>
-        {toggle && (
+        {state && (
           <motion.div
             initial={{ width: 0 }}
-            animate={{ width: 200 }}
+            animate={{ width: 300 }}
             exit={{ width: 0 }}
             transition={{ duration: 0.6 }}
             className="option__side bg-light-purple w-full  "
@@ -35,7 +36,7 @@ export default function NavBar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2, delay: 0.2 }}
+              transition={{ duration: 0.1, delay: 0.2 }}
             >
               <div className="main__icon text-4xl mb-8">
                 <MdGamepad />
